@@ -8,21 +8,6 @@
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
 
-    @keyframes bgflash {
-      0%, 49.9% { background-color: #ffffff; }
-      50%, 100% { background-color: #000000; }
-    }
-
-    @keyframes textflash {
-      0%, 49.9% { color: #000000; }
-      50%, 100%  { color: #ffffff; }
-    }
-
-    @keyframes smileyflash {
-      0%, 49.9% { filter: none; }
-      50%, 100%  { filter: invert(1); }
-    }
-
     body {
       font-family: 'Times New Roman', Times, serif;
       text-align: center;
@@ -34,7 +19,8 @@
       align-items: center;
       justify-content: center;
       gap: 20px;
-      animation: bgflash 0.8s steps(1, end) infinite;
+      background-color: #ffffff;
+      color: #000000;
     }
 
     h1 {
@@ -42,25 +28,22 @@
       font-weight: bold;
       line-height: 1.1;
       max-width: 90vw;
-      animation: textflash 0.8s steps(1, end) infinite;
     }
 
     p.sub {
       font-size: clamp(16px, 3vw, 28px);
       font-weight: bold;
       max-width: 80vw;
-      animation: textflash 0.8s steps(1, end) infinite;
     }
 
     .proton-link {
       font-size: clamp(13px, 2vw, 20px);
       font-weight: bold;
-      animation: textflash 0.8s steps(1, end) infinite;
     }
 
     .proton-link a {
       text-decoration: underline;
-      animation: textflash 0.8s steps(1, end) infinite;
+      color: inherit;
     }
 
     .face-row {
@@ -93,13 +76,24 @@
     <a href="https://proton.me" target="_blank" rel="noopener noreferrer">Be better, protect your privacy with proton.me</a>
   </div>
 
-<script>
-  const smileys = document.querySelectorAll(".smiley-img");
-  let inverted = false;
-  setInterval(() => {
-    inverted = !inverted;
-    smileys.forEach(s => s.style.filter = inverted ? "invert(1)" : "none");
-  }, 800);
-</script>
+  <script>
+    const body = document.body;
+    const smileys = document.querySelectorAll('.smiley-img');
+    let white = true;
+
+    setInterval(() => {
+      white = !white;
+      if (white) {
+        body.style.backgroundColor = '#ffffff';
+        body.style.color = '#000000';
+        smileys.forEach(s => s.style.filter = 'none');
+      } else {
+        body.style.backgroundColor = '#000000';
+        body.style.color = '#ffffff';
+        smileys.forEach(s => s.style.filter = 'invert(1)');
+      }
+    }, 800);
+  </script>
+
 </body>
 </html>
