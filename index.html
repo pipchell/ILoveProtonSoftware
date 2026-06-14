@@ -19,8 +19,6 @@
       align-items: center;
       justify-content: center;
       gap: 20px;
-      background-color: #ffffff;
-      color: #000000;
     }
 
     h1 {
@@ -59,9 +57,27 @@
       height: 80px;
       display: inline-block;
     }
+
+    body.white {
+      background-color: #ffffff;
+      color: #000000;
+    }
+
+    body.black {
+      background-color: #000000;
+      color: #ffffff;
+    }
+
+    body.black .smiley-img {
+      filter: invert(1);
+    }
+
+    body.white .smiley-img {
+      filter: none;
+    }
   </style>
 </head>
-<body>
+<body class="white">
 
   <h1>you are not an idiot</h1>
   <p class="sub">You are actually quite smart. Well done.</p>
@@ -78,19 +94,11 @@
 
   <script>
     const body = document.body;
-    const smileys = document.querySelectorAll('.smiley-img');
-    let white = true;
-
     setInterval(() => {
-      white = !white;
-      if (white) {
-        body.style.backgroundColor = '#ffffff';
-        body.style.color = '#000000';
-        smileys.forEach(s => s.style.filter = 'none');
+      if (body.classList.contains('white')) {
+        body.classList.replace('white', 'black');
       } else {
-        body.style.backgroundColor = '#000000';
-        body.style.color = '#ffffff';
-        smileys.forEach(s => s.style.filter = 'invert(1)');
+        body.classList.replace('black', 'white');
       }
     }, 800);
   </script>
