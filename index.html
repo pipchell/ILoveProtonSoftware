@@ -7,10 +7,14 @@
   <link rel="icon" type="image/png" href="favicon.png">
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
+
     body {
       font-family: 'Times New Roman', Times, serif;
-      text-align: center;
-      overflow: hidden;
+      overflow-y: scroll;
+    }
+
+    /* ── HERO SECTION ── */
+    #hero {
       height: 100vh;
       width: 100vw;
       display: flex;
@@ -18,26 +22,32 @@
       align-items: center;
       justify-content: center;
       gap: 24px;
+      text-align: center;
     }
+
     h1 {
       font-size: clamp(42px, 9vw, 96px);
       font-weight: bold;
       line-height: 1.1;
       max-width: 90vw;
     }
+
     p.sub {
       font-size: clamp(22px, 4.5vw, 48px);
       font-weight: bold;
       max-width: 80vw;
     }
+
     .proton-link {
       font-size: clamp(16px, 3vw, 32px);
       font-weight: bold;
     }
+
     .proton-link a {
       text-decoration: underline;
       color: inherit;
     }
+
     .face-row {
       display: flex;
       align-items: center;
@@ -45,45 +55,190 @@
       width: min(600px, 80vw);
       margin: 4px 0;
     }
+
     .smiley-img {
       width: 100px;
       height: 100px;
     }
+
+    .scroll-hint {
+      font-size: clamp(13px, 2vw, 18px);
+      opacity: 0.6;
+      margin-top: 8px;
+      letter-spacing: 0.05em;
+    }
+
+    /* ── REASONS SECTION ── */
+    #reasons {
+      background-color: #ffffff;
+      color: #111111;
+      padding: 80px 40px;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    #reasons h2 {
+      font-size: clamp(24px, 4vw, 42px);
+      font-weight: bold;
+      margin-bottom: 12px;
+      text-align: center;
+    }
+
+    #reasons .intro {
+      font-size: clamp(15px, 2vw, 20px);
+      color: #444;
+      text-align: center;
+      margin-bottom: 56px;
+      font-style: italic;
+    }
+
+    .reason {
+      margin-bottom: 48px;
+    }
+
+    .reason h3 {
+      font-size: clamp(18px, 2.5vw, 26px);
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    .reason p {
+      font-size: clamp(14px, 1.8vw, 18px);
+      line-height: 1.7;
+      color: #333;
+    }
+
+    .reason .vs {
+      margin-top: 10px;
+      font-size: clamp(13px, 1.6vw, 17px);
+      color: #555;
+      border-left: 3px solid #aaa;
+      padding-left: 14px;
+      line-height: 1.6;
+    }
+
+    #reasons footer {
+      margin-top: 64px;
+      text-align: center;
+      font-size: clamp(14px, 2vw, 20px);
+      font-weight: bold;
+    }
+
+    #reasons footer a {
+      color: #111;
+      text-decoration: underline;
+    }
   </style>
 </head>
 <body>
-  <h1>you are not an idiot</h1>
-  <p class="sub">You are actually quite smart. Well done.</p>
-  <div class="face-row">
-    <img class="smiley-img" src="smiley_frame.png" alt="smiley">
-    <img class="smiley-img" src="smiley_frame.png" alt="smiley">
-    <img class="smiley-img" src="smiley_frame.png" alt="smiley">
-  </div>
-  <div class="proton-link">
-    <a href="https://proton.me" target="_blank" rel="noopener noreferrer">Be better, protect your privacy with proton.me</a>
-  </div>
+
+  <!-- HERO -->
+  <section id="hero">
+    <h1>you are not an idiot</h1>
+    <p class="sub">You are actually quite smart. Well done.</p>
+    <div class="face-row">
+      <img class="smiley-img" src="smiley_frame.png" alt="smiley">
+      <img class="smiley-img" src="smiley_frame.png" alt="smiley">
+      <img class="smiley-img" src="smiley_frame.png" alt="smiley">
+    </div>
+    <div class="proton-link">
+      <a href="https://proton.me" target="_blank" rel="noopener noreferrer">Be better, protect your privacy with proton.me</a>
+    </div>
+    <p class="scroll-hint">scroll down</p>
+  </section>
+
+  <!-- REASONS -->
+  <section id="reasons">
+    <h2>Why you should ditch Google</h2>
+    <p class="intro">Not because we told you to. Because you're smart enough to decide for yourself.</p>
+
+    <div class="reason">
+      <h3>Google reads your emails</h3>
+      <p>Gmail scans every email you send and receive to build a profile of you. That data is used to serve you targeted ads and shared with third parties. Your inbox is not private.</p>
+      <p class="vs">Proton Mail uses end-to-end encryption. Even Proton cannot read your emails. Nobody can.</p>
+    </div>
+
+    <div class="reason">
+      <h3>Google tracks everywhere you go</h3>
+      <p>Google Maps and Location History log your movements 24/7 — where you work, where you sleep, who you visit. This data is retained for years and has been handed to law enforcement without your knowledge.</p>
+      <p class="vs">Proton does not track your location. There is no profile. There is no history to hand over.</p>
+    </div>
+
+    <div class="reason">
+      <h3>Google's business model is your attention</h3>
+      <p>Google makes nearly all of its money from advertising. That means the product is you — your behaviour, your habits, your fears, your desires, all packaged and sold to the highest bidder.</p>
+      <p class="vs">Proton's business model is subscriptions. They make money when you pay them, not when advertisers pay to reach you.</p>
+    </div>
+
+    <div class="reason">
+      <h3>Google search filters what you see</h3>
+      <p>Search results are personalised based on your profile. Two people searching the same thing see different results. Your worldview is quietly being shaped by an algorithm optimised for engagement, not truth.</p>
+      <p class="vs">Proton does not run a search engine, but switching to a non-tracking alternative like DuckDuckGo or Brave Search gives you unfiltered results.</p>
+    </div>
+
+    <div class="reason">
+      <h3>Google knows more about you than your family does</h3>
+      <p>Between Search, YouTube, Gmail, Maps, Chrome, Android, and Drive, Google has a more complete picture of your life than almost any person or institution on earth. That data will outlast you.</p>
+      <p class="vs">Proton's suite — Mail, Drive, VPN, Calendar — gives you all the tools you actually need, with none of the surveillance.</p>
+    </div>
+
+    <footer>
+      You are smart enough to make a better choice.<br><br>
+      <a href="https://proton.me" target="_blank" rel="noopener noreferrer">Switch to Proton</a>
+    </footer>
+  </section>
 
   <script>
+    const hero = document.getElementById('hero');
     const smileys = document.querySelectorAll('.smiley-img');
     let white = true;
-    const INTERVAL = 600;
+    let flashing = true;
+    let intervalId;
 
     function applyState() {
       if (white) {
-        document.body.style.cssText = 'background-color:#ffffff;color:#000000;font-family:Times New Roman,Times,serif;text-align:center;overflow:hidden;height:100vh;width:100vw;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:24px;';
-        smileys.forEach(s => { s.style.filter = 'none'; });
+        hero.style.backgroundColor = '#ffffff';
+        hero.style.color = '#000000';
+        smileys.forEach(s => s.style.filter = 'none');
       } else {
-        document.body.style.cssText = 'background-color:#000000;color:#ffffff;font-family:Times New Roman,Times,serif;text-align:center;overflow:hidden;height:100vh;width:100vw;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:24px;';
-        smileys.forEach(s => { s.style.filter = 'invert(1)'; });
+        hero.style.backgroundColor = '#000000';
+        hero.style.color = '#ffffff';
+        smileys.forEach(s => s.style.filter = 'invert(1)');
       }
     }
 
-    applyState();
+    function startFlash() {
+      if (flashing) return;
+      flashing = true;
+      intervalId = setInterval(() => {
+        white = !white;
+        requestAnimationFrame(applyState);
+      }, 600);
+    }
 
-    setInterval(() => {
+    function stopFlash() {
+      if (!flashing) return;
+      flashing = false;
+      clearInterval(intervalId);
+      // settle on white
+      white = true;
+      applyState();
+    }
+
+    applyState();
+    intervalId = setInterval(() => {
       white = !white;
       requestAnimationFrame(applyState);
-    }, INTERVAL);
+    }, 600);
+
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 50) {
+        stopFlash();
+      } else {
+        startFlash();
+      }
+    });
   </script>
+
 </body>
 </html>
