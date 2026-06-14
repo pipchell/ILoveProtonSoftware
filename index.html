@@ -1,89 +1,105 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>I ❤️ Proton</title>
-    <style>
-        /* Smoothly shifts the background through different colors */
-        @keyframes changeBackground {
-            0% { background-color: #ffadad; }
-            20% { background-color: #ffd6a5; }
-            40% { background-color: #fdffb6; }
-            60% { background-color: #caffbf; }
-            80% { background-color: #9bf6ff; }
-            100% { background-color: #ffadad; }
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>You Are NOT An Idiot!</title>
+  <link rel="icon" type="image/png" href="favicon.png">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
 
-        /* Flips the colors of the face box between black and white */
-        @keyframes invertColors {
-            0% { background-color: #000000; color: #ffffff; border-color: #ffffff; }
-            50% { background-color: #ffffff; color: #000000; border-color: #000000; }
-            100% { background-color: #000000; color: #ffffff; border-color: #ffffff; }
-        }
+    @keyframes bgflash {
+      0%, 49.9% { background-color: #ffffff; }
+      50%, 100% { background-color: #000000; }
+    }
 
-        body {
-            animation: changeBackground 10s ease infinite;
-            color: #000000;
-            font-family: "Times New Roman", Times, serif;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-            overflow: hidden;
-        }
+    @keyframes textflash {
+      0%, 49.9% { color: #000000; }
+      50%, 100%  { color: #ffffff; }
+    }
 
-        .container {
-            text-align: center;
-            padding: 20px;
-        }
+    @keyframes smileyflash {
+      0%, 49.9% { filter: none; }
+      50%, 100%  { filter: invert(1); }
+    }
 
-        /* Centered face box that flashes independently */
-        .face-box {
-            display: inline-block;
-            font-size: 5rem;
-            padding: 15px 40px;
-            margin-bottom: 30px;
-            line-height: 1;
-            border: 8px solid #000000;
-            animation: invertColors 0.5s infinite;
-            letter-spacing: 15px;
-        }
+    body {
+      font-family: 'Times New Roman', Times, serif;
+      text-align: center;
+      overflow: hidden;
+      height: 100vh;
+      width: 100vw;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      animation: bgflash 0.8s steps(1, end) infinite;
+    }
 
-        h1 {
-            font-size: 4rem;
-            font-weight: bold;
-            margin: 0 0 30px 0;
-            line-height: 1.2;
-        }
+    h1 {
+      font-size: clamp(42px, 9vw, 96px);
+      font-weight: bold;
+      line-height: 1.1;
+      max-width: 90vw;
+      animation: textflash 0.8s steps(1, end) infinite;
+    }
 
-        .link-container {
-            margin-top: 20px;
-        }
+    p.sub {
+      font-size: clamp(16px, 3vw, 28px);
+      font-weight: bold;
+      max-width: 80vw;
+      animation: textflash 0.8s steps(1, end) infinite;
+    }
 
-        a {
-            font-size: 1.5rem;
-            color: #000000;
-            text-decoration: underline;
-            font-weight: bold;
-        }
-        
-        a:hover {
-            color: #6d4aff;
-        }
-    </style>
+    .proton-link {
+      font-size: clamp(13px, 2vw, 20px);
+      font-weight: bold;
+      animation: textflash 0.8s steps(1, end) infinite;
+    }
+
+    .proton-link a {
+      text-decoration: underline;
+      animation: textflash 0.8s steps(1, end) infinite;
+    }
+
+    .face-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: min(420px, 80vw);
+      margin: 4px 0;
+    }
+
+    .smiley-img {
+      width: 80px;
+      height: 80px;
+      display: inline-block;
+    }
+  </style>
 </head>
 <body>
 
-    <div class="container">
-        <div class="face-box">☺☺☺</div>
-        <h1>YOU ARE NOT<br>AN IDIOT.</h1>
-        <div class="link-container">
-            <a href="https://proton.me" target="_blank" rel="noopener noreferrer">PROTON.ME</a>
-        </div>
-    </div>
+  <h1>you are not an idiot</h1>
+  <p class="sub">You are actually quite smart. Well done.</p>
 
+  <div class="face-row">
+    <img class="smiley-img" src="smiley.gif" alt="smiley">
+    <img class="smiley-img" src="smiley.gif" alt="smiley">
+    <img class="smiley-img" src="smiley.gif" alt="smiley">
+  </div>
+
+  <div class="proton-link">
+    <a href="https://proton.me" target="_blank" rel="noopener noreferrer">Be better, protect your privacy with proton.me</a>
+  </div>
+
+<script>
+  const smileys = document.querySelectorAll(".smiley-img");
+  let inverted = false;
+  setInterval(() => {
+    inverted = !inverted;
+    smileys.forEach(s => s.style.filter = inverted ? "invert(1)" : "none");
+  }, 800);
+</script>
 </body>
 </html>
