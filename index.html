@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>You are not an idiot — Protect your privacy</title>
-  <meta name="description" content="A simple landing page encouraging people to switch to privacy-focused tools like Proton, Signal, Organic Maps, and DuckDuckGo.">
+  <title>You are not an idiot — Stop being treated like one</title>
+  <meta name="description" content="Stop letting companys sell your data. Switch to privacy-focused tools like Proton, Signal, Organic Maps, and DuckDuckGo.">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://iloveproton.software/">
 
@@ -14,7 +14,7 @@
   <meta property="og:description" content="A simple landing page encouraging people to switch to privacy-focused tools.">
   <meta property="og:image" content="https://iloveproton.software/favicon.png">
 
-  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="You are not an idiot — Protect your privacy">
   <meta name="twitter:description" content="A simple landing page encouraging people to switch to privacy-focused tools.">
   <meta name="twitter:image" content="https://iloveproton.software/favicon.png">
@@ -23,182 +23,158 @@
   <link rel="apple-touch-icon" href="favicon.png">
 
   <style>
-    :root {
-      color-scheme: light;
-      --bg: #f6f2ea;
-      --paper: #ffffff;
-      --ink: #111111;
-      --muted: #555555;
-      --border: #e6ded1;
-      --accent: #0f766e;
-    }
-
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
+      * { margin: 0; padding: 0; box-sizing: border-box; }
 
     body {
-      margin: 0;
-      font-family: Georgia, "Times New Roman", serif;
-      color: var(--ink);
-      background: var(--bg);
-      line-height: 1.6;
+      font-family: 'Times New Roman', Times, serif;
+      overflow-y: scroll;
     }
 
-    a { color: inherit; }
-
-    .hero {
-      min-height: 100vh;
-      display: grid;
-      place-items: center;
-      padding: 32px 20px;
-      background: linear-gradient(180deg, #fff 0%, #f6f2ea 100%);
+    /* ── HERO SECTION ── */
+    #hero {
+      height: 100vh;
+      width: 100vw;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 24px;
       text-align: center;
-    }
-
-    .hero-inner, .content, .footer {
-      width: min(920px, 100%);
-      margin: 0 auto;
-    }
-
-    .eyebrow {
-      text-transform: uppercase;
-      letter-spacing: .14em;
-      font-size: .82rem;
-      color: var(--accent);
-      margin-bottom: 16px;
-      font-weight: 700;
     }
 
     h1 {
-      font-size: clamp(2.8rem, 8vw, 6.2rem);
-      line-height: .95;
-      margin: 0 0 18px;
-      text-wrap: balance;
+      font-size: clamp(42px, 9vw, 96px);
+      font-weight: bold;
+      line-height: 1.1;
+      max-width: 90vw;
     }
 
-    .subhead {
-      font-size: clamp(1.2rem, 2.8vw, 2rem);
-      color: var(--muted);
-      max-width: 42rem;
-      margin: 0 auto 28px;
+    p.sub {
+      font-size: clamp(22px, 4.5vw, 48px);
+      font-weight: bold;
+      max-width: 80vw;
     }
 
-    .cta-row {
+    .proton-link {
+      font-size: clamp(16px, 3vw, 32px);
+      font-weight: bold;
+    }
+
+    .proton-link a {
+      text-decoration: underline;
+      color: inherit;
+    }
+
+    .face-row {
       display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 12px;
-      margin-top: 8px;
-    }
-
-    .btn {
-      display: inline-flex;
       align-items: center;
-      justify-content: center;
-      padding: 12px 18px;
-      border: 2px solid var(--ink);
-      border-radius: 999px;
-      text-decoration: none;
-      font-weight: 700;
-      background: var(--paper);
+      justify-content: space-between;
+      width: min(600px, 80vw);
+      margin: 4px 0;
     }
 
-    .btn.primary {
-      background: var(--ink);
-      color: #fff;
+    .smiley-img {
+      width: 100px;
+      height: 100px;
     }
 
     .scroll-hint {
-      margin-top: 30px;
-      color: var(--muted);
-      font-size: .95rem;
+      font-size: clamp(13px, 2vw, 18px);
+      opacity: 0.6;
+      margin-top: 8px;
+      letter-spacing: 0.05em;
     }
 
-    .content {
-      background: var(--paper);
-      border-top: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
-      padding: 72px 20px;
+    /* ── REASONS SECTION ── */
+    #reasons {
+      background-color: #ffffff;
+      color: #111111;
+      padding: 80px 40px;
+      max-width: 800px;
+      margin: 0 auto;
     }
 
-    .section-title {
-      font-size: clamp(1.8rem, 4vw, 3rem);
-      line-height: 1.1;
-      margin: 0 0 14px;
+    #reasons h2 {
+      font-size: clamp(24px, 4vw, 42px);
+      font-weight: bold;
+      margin-bottom: 12px;
+      text-align: center;
     }
 
-    .intro {
-      color: var(--muted);
-      max-width: 54rem;
-      margin: 0 0 40px;
-      font-size: 1.05rem;
-    }
-
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 18px;
-    }
-
-    .card {
-      border: 1px solid var(--border);
-      border-radius: 18px;
-      padding: 22px;
-      background: #fffdf9;
-    }
-
-    .card h3 {
-      margin: 0 0 8px;
-      font-size: 1.2rem;
-    }
-
-    .card p { margin: 0; color: #333; }
-
-    .card .alt {
-      margin-top: 14px;
-      padding-top: 14px;
-      border-top: 1px solid var(--border);
-      color: var(--muted);
+    #reasons .intro {
+      font-size: clamp(15px, 2vw, 20px);
+      color: #444;
+      text-align: center;
+      margin-bottom: 56px;
       font-style: italic;
     }
 
-    .note {
-      margin-top: 40px;
-      padding: 18px 20px;
-      border-left: 4px solid var(--accent);
-      background: #f2fbfa;
-      color: #134e4a;
-      border-radius: 12px;
+    .reason {
+      margin-bottom: 48px;
     }
 
-    .footer {
-      padding: 34px 20px 50px;
+    .reason h3 {
+      font-size: clamp(18px, 2.5vw, 26px);
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    .reason p {
+      font-size: clamp(14px, 1.8vw, 18px);
+      line-height: 1.7;
+      color: #333;
+    }
+
+    .reason .vs {
+      margin-top: 10px;
+      font-size: clamp(13px, 1.6vw, 17px);
+      color: #555;
+      border-left: 3px solid #aaa;
+      padding-left: 14px;
+      line-height: 1.6;
+    }
+
+    #reasons footer {
+      margin-top: 64px;
       text-align: center;
-      color: var(--muted);
+      font-size: clamp(14px, 2vw, 20px);
+      font-weight: bold;
     }
 
-    .share {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 10px;
-      margin-top: 18px;
+    #reasons footer a {
+      color: #111;
+      text-decoration: underline;
     }
 
-    .share a {
-      text-decoration: none;
-      padding: 9px 14px;
-      border: 1px solid var(--border);
-      border-radius: 999px;
-      background: #fff;
-      color: var(--ink);
-      font-size: .95rem;
-    }
+    .share-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 24px;
+}
 
-    @media (max-width: 720px) {
-      .grid { grid-template-columns: 1fr; }
-      .content, .footer { padding-left: 16px; padding-right: 16px; }
-    }
+.share-buttons a {
+  display: inline-block;
+  padding: 8px 18px;
+  border: 2px solid #111;
+  color: #111;
+  text-decoration: none;
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 15px;
+  font-weight: bold;
+  transition: background 0.15s, color 0.15s;
+}
+
+.share-section {
+  margin-top: 40px;
+}
+.copyright {
+  margin-top: 50px;
+  margin-bottom: 40px;
+  font-size: clamp(14px, 2vw, 20px);
+  font-weight: normal;
+}
   </style>
 
   <script type="application/ld+json">
@@ -214,64 +190,129 @@
 </head>
 <body>
   <main>
-    <section class="hero" aria-labelledby="hero-title">
-      <div class="hero-inner">
-        <div class="eyebrow">Privacy is a choice</div>
-        <h1 id="hero-title">You are not an idiot.</h1>
-        <p class="subhead">You can choose tools that respect your privacy without giving up a good experience.</p>
-        <div class="cta-row">
-          <a class="btn primary" href="#reasons">See why</a>
-          <a class="btn" href="https://proton.me" target="_blank" rel="noopener noreferrer">Visit Proton</a>
+  <!-- HERO -->
+  <section id="hero">
+    <h1>you are not an idiot</h1>
+    <p class="sub">You are actually quite smart.</p>
+    <div class="face-row">
+      <img class="smiley-img" src="smiley_frame.png" alt="smiley">
+      <img class="smiley-img" src="smiley_frame.png" alt="smiley">
+      <img class="smiley-img" src="smiley_frame.png" alt="smiley">
+    </div>
+    <div class="proton-link">
+      <p>So you can do better, protect your privacy.</p>
+    </div>
+    <p class="scroll-hint">scroll down</p>
+  </section>
+    
+ <!-- REASONS -->
+  <section id="reasons">
+    <h2 style="text-align: left !important;">Let's use Google as an example.</h2>
+    <p>‎ </p>
+    <p>‎ </p>
+    <p>‎ </p>
+    <div class="reason">
+      <h3>Google reads your emails</h3>
+      <p>Gmail processes emails, and as it is a cloud-based system rather than fully end-to-end encrypted, it raises privacy concerns.</p>
+      <p class="vs">Proton Mail uses end-to-end encryption. Even Proton cannot read your emails. Nobody can.</p>
+    </div>
+
+    <div class="reason">
+      <h3>Google tracks everywhere you go</h3>
+      <p>Google Maps and Location History could be logging your movements, like where you work, where you sleep, who you visit. Data may be retained for extended periods and can be disclosed to law enforcement through legal requests.</p>
+      <p class="vs">Organic Maps does not store your location. There is no profile. There is no history to hand over.</p>
+    </div>
+
+    <div class="reason">
+      <h3>Google's business model is your attention</h3>
+      <p>Google makes nearly all of its money from advertising. That means the product is you. Google knowing your behaviour, your habits, your fears, your desires, is the price of a free product.</p>
+      <p class="vs">Signal is operated by a non-profit foundation funded through donations and grants.</p>
+    </div>
+
+    <div class="reason">
+      <h3>Google search filters what you see</h3>
+      <p>Search results can be personalised based on your data. Two people searching the same thing see different results. Your worldview might be quietly being shaped by an algorithm optimised for engagement, not truth.</p>
+      <p class="vs">DuckDuckGo provides less personalised responses, with minimal user tracking.</p>
+    </div>
+
+    <div class="reason">
+      <h3>Google might know more about you than your family does</h3>
+      <p>Between Search, YouTube, Gmail, Maps, Chrome, Android, and Drive, Google can aggregate large amounts of data across services.</p>
+      <p class="vs">Proton's suite - Mail, Drive, VPN, Calendar, etc. - provides privacy-focused tools for common needs, with less of the surveillance.</p>
+    </div>
+    <h2 style="text-align: left !important;">Overall:</h2>
+    <p>Using non-privacy-focused platforms like Google, your data is stored and often used to build profiles based on your activity, habits, and interactions. This can help personalise services and ads, but also allows behavioural tracking across apps and services, plus data sharing through integrations and legal requests. Privacy-focused alternatives reduce this by limiting tracking and using encryption so less of your data can be accessed or monetised.</p>
+    <footer>
+      You are smart enough to make a better choice.<br><br>
+      <p class="intro">Not because I told you to. Because you're smart enough to decide for yourself.</p>
+      <a>Switch to</a><a href="https://proton.me" target="_blank" rel="noopener noreferrer">Proton</a><br>
+      <a>Switch to</a><a href="https://organicmaps.app/" target="_blank" rel="noopener noreferrer">Organic Maps</a><br>  
+      <a>Switch to</a><a href="https://signal.org/" target="_blank" rel="noopener noreferrer">Signal</a><br>
+      <a>Switch to</a><a href="https://duckduckgo.com/" target="_blank" rel="noopener noreferrer">DuckDuckGo</a>      
+        <div class="share-section">
+        <p class="share-label">Share this page</p>
+        <div class="share-buttons">
+          <a class="share-btn" href="https://twitter.com/intent/tweet?url=https://iloveproton.software&text=You+are+not+an+idiot.+Stop+letting+Google+track+you." target="_blank" rel="noopener noreferrer">X</a>
+          <a class="share-btn" href="https://www.facebook.com/sharer/sharer.php?u=https://iloveproton.software" target="_blank" rel="noopener noreferrer">Facebook</a>
+          <a class="share-btn" href="https://reddit.com/submit?url=https://iloveproton.software&title=You+are+not+an+idiot+%E2%80%94+ditch+Google" target="_blank" rel="noopener noreferrer">Reddit</a>
+          <a class="share-btn" href="https://wa.me/?text=You+are+not+an+idiot.+Stop+letting+Google+track+you.+https://iloveproton.software" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+          <a class="share-btn" href="https://t.me/share/url?url=https://iloveproton.software&text=You+are+not+an+idiot.+Ditch+Google." target="_blank" rel="noopener noreferrer">Telegram</a>
+          <a class="share-btn" href="https://www.linkedin.com/sharing/share-offsite/?url=https://iloveproton.software" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+          <a class="share-btn" href="mailto:?subject=You%20are%20not%20an%20idiot&body=Stop%20letting%20Google%20track%20you.%20Read%20this%3A%20https%3A%2F%2Filoveproton.software" target="_blank" rel="noopener noreferrer">Email</a>
         </div>
-        <div class="scroll-hint">Scroll for a few simple reasons to switch.</div>
       </div>
-    </section>
-
-    <section class="content" id="reasons">
-      <div class="hero-inner">
-        <h2 class="section-title">Why people switch</h2>
-        <p class="intro">This version keeps the strong tone, but it is cleaner, more credible, and less likely to be challenged on wording or accessibility.</p>
-
-        <div class="grid">
-          <article class="card">
-            <h3>Private email matters</h3>
-            <p>Proton Mail uses end-to-end encryption for supported messages, which means Proton says it cannot read your email content.</p>
-            <p class="alt">Better message: your inbox should not double as an ad profile.</p>
-          </article>
-
-          <article class="card">
-            <h3>Location history adds up</h3>
-            <p>Maps and search products can build a detailed picture of where you go and what you do over time.</p>
-            <p class="alt">Better message: your routes should help you navigate, not follow you home.</p>
-          </article>
-
-          <article class="card">
-            <h3>Attention is the business model</h3>
-            <p>Ad-funded platforms often optimise for engagement, which can reward tracking and profiling.</p>
-            <p class="alt">Better message: if the product is free, your data may be part of the price.</p>
-          </article>
-
-          <article class="card">
-            <h3>Search should stay useful</h3>
-            <p>Privacy-focused search tools aim to reduce personalised profiling and tracking.</p>
-            <p class="alt">Better message: you should see search results, not a mirror of your profile.</p>
-          </article>
-        </div>
-
-        <div class="note">
-          Switches do not need to be perfect to be worthwhile. Small changes like better email, private messaging, and less tracking can make a real difference.
-        </div>
-      </div>
-    </section>
-
-    <footer class="footer">
-      <div>Made by Pip Chell, 2026.</div>
-      <div class="share" aria-label="Share links">
-        <a href="https://twitter.com/intent/tweet?url=https://iloveproton.software&text=You%20are%20not%20an%20idiot.%20Protect%20your%20privacy." target="_blank" rel="noopener noreferrer">X</a>
-        <a href="https://www.reddit.com/submit?url=https://iloveproton.software&title=You%20are%20not%20an%20idiot" target="_blank" rel="noopener noreferrer">Reddit</a>
-        <a href="mailto:?subject=You%20are%20not%20an%20idiot&body=Protect%20your%20privacy:%20https%3A%2F%2Filoveproton.software" target="_blank" rel="noopener noreferrer">Email</a>
-      </div>
+      <p class="copyright">© Pip Chell 2026</p>
     </footer>
-  </main>
+  </section>
+  <script>
+  const hero = document.getElementById('hero');
+  const smileys = document.querySelectorAll('.smiley-img');
+  let white = true;
+  let flashing = true;
+  let intervalId;
+
+  function applyState() {
+    if (white) {
+      hero.style.backgroundColor = '#ffffff';
+      hero.style.color = '#000000';
+      smileys.forEach(s => s.style.filter = 'none');
+    } else {
+      hero.style.backgroundColor = '#000000';
+      hero.style.color = '#ffffff';
+      smileys.forEach(s => s.style.filter = 'invert(1)');
+    }
+  }
+
+  function startFlash() {
+    if (flashing) return;
+    flashing = true;
+    intervalId = setInterval(() => {
+      white = !white;
+      requestAnimationFrame(applyState);
+    }, 600);
+  }
+
+  function stopFlash() {
+    if (!flashing) return;
+    flashing = false;
+    clearInterval(intervalId);
+    white = true;
+    applyState();
+  }
+
+  applyState();
+  intervalId = setInterval(() => {
+    white = !white;
+    requestAnimationFrame(applyState);
+  }, 600);
+
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 50) {
+      stopFlash();
+    } else {
+      startFlash();
+    }
+  });
+</script>
 </body>
 </html>
