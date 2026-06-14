@@ -236,10 +236,12 @@
     <footer>
       You are smart enough to make a better choice.<br><br>
       <a href="https://proton.me" target="_blank" rel="noopener noreferrer">Switch to Proton</a>
+      <p>  </p>
+      <p>   </p>
         <div class="share-section">
         <p class="share-label">Share this page</p>
         <div class="share-buttons">
-          <a class="share-btn" href="https://twitter.com/intent/tweet?url=https://iloveproton.software&text=You+are+not+an+idiot.+Stop+letting+Google+track+you." target="_blank" rel="noopener noreferrer">X / Twitter</a>
+          <a class="share-btn" href="https://twitter.com/intent/tweet?url=https://iloveproton.software&text=You+are+not+an+idiot.+Stop+letting+Google+track+you." target="_blank" rel="noopener noreferrer">X</a>
           <a class="share-btn" href="https://www.facebook.com/sharer/sharer.php?u=https://iloveproton.software" target="_blank" rel="noopener noreferrer">Facebook</a>
           <a class="share-btn" href="https://reddit.com/submit?url=https://iloveproton.software&title=You+are+not+an+idiot+%E2%80%94+ditch+Google" target="_blank" rel="noopener noreferrer">Reddit</a>
           <a class="share-btn" href="https://wa.me/?text=You+are+not+an+idiot.+Stop+letting+Google+track+you.+https://iloveproton.software" target="_blank" rel="noopener noreferrer">WhatsApp</a>
@@ -250,5 +252,55 @@
       </div>
     </footer>
   </section>
+  <script>
+  const hero = document.getElementById('hero');
+  const smileys = document.querySelectorAll('.smiley-img');
+  let white = true;
+  let flashing = true;
+  let intervalId;
+
+  function applyState() {
+    if (white) {
+      hero.style.backgroundColor = '#ffffff';
+      hero.style.color = '#000000';
+      smileys.forEach(s => s.style.filter = 'none');
+    } else {
+      hero.style.backgroundColor = '#000000';
+      hero.style.color = '#ffffff';
+      smileys.forEach(s => s.style.filter = 'invert(1)');
+    }
+  }
+
+  function startFlash() {
+    if (flashing) return;
+    flashing = true;
+    intervalId = setInterval(() => {
+      white = !white;
+      requestAnimationFrame(applyState);
+    }, 600);
+  }
+
+  function stopFlash() {
+    if (!flashing) return;
+    flashing = false;
+    clearInterval(intervalId);
+    white = true;
+    applyState();
+  }
+
+  applyState();
+  intervalId = setInterval(() => {
+    white = !white;
+    requestAnimationFrame(applyState);
+  }, 600);
+
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 50) {
+      stopFlash();
+    } else {
+      startFlash();
+    }
+  });
+</script>
 </body>
 </html>
