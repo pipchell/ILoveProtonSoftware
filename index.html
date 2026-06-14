@@ -7,7 +7,6 @@
   <link rel="icon" type="image/png" href="favicon.png">
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
-
     body {
       font-family: 'Times New Roman', Times, serif;
       text-align: center;
@@ -20,30 +19,25 @@
       justify-content: center;
       gap: 20px;
     }
-
     h1 {
       font-size: clamp(42px, 9vw, 96px);
       font-weight: bold;
       line-height: 1.1;
       max-width: 90vw;
     }
-
     p.sub {
       font-size: clamp(16px, 3vw, 28px);
       font-weight: bold;
       max-width: 80vw;
     }
-
     .proton-link {
       font-size: clamp(13px, 2vw, 20px);
       font-weight: bold;
     }
-
     .proton-link a {
       text-decoration: underline;
       color: inherit;
     }
-
     .face-row {
       display: flex;
       align-items: center;
@@ -51,57 +45,45 @@
       width: min(420px, 80vw);
       margin: 4px 0;
     }
-
     .smiley-img {
       width: 80px;
       height: 80px;
-      display: inline-block;
-    }
-
-    body.white {
-      background-color: #ffffff;
-      color: #000000;
-    }
-
-    body.black {
-      background-color: #000000;
-      color: #ffffff;
-    }
-
-    body.black .smiley-img {
-      filter: invert(1);
-    }
-
-    body.white .smiley-img {
-      filter: none;
     }
   </style>
 </head>
-<body class="white">
-
+<body>
   <h1>you are not an idiot</h1>
   <p class="sub">You are actually quite smart. Well done.</p>
-
   <div class="face-row">
-    <img class="smiley-img" src="smiley.gif" alt="smiley">
-    <img class="smiley-img" src="smiley.gif" alt="smiley">
-    <img class="smiley-img" src="smiley.gif" alt="smiley">
+    <img class="smiley-img" src="smiley_frame.png" alt="smiley">
+    <img class="smiley-img" src="smiley_frame.png" alt="smiley">
+    <img class="smiley-img" src="smiley_frame.png" alt="smiley">
   </div>
-
   <div class="proton-link">
     <a href="https://proton.me" target="_blank" rel="noopener noreferrer">Be better, protect your privacy with proton.me</a>
   </div>
 
   <script>
-    const body = document.body;
-    setInterval(() => {
-      if (body.classList.contains('white')) {
-        body.classList.replace('white', 'black');
-      } else {
-        body.classList.replace('black', 'white');
-      }
-    }, 800);
-  </script>
+    const smileys = document.querySelectorAll('.smiley-img');
+    let white = true;
+    const INTERVAL = 800;
 
+    function applyState() {
+      if (white) {
+        document.body.style.cssText = 'background-color:#ffffff;color:#000000;font-family:Times New Roman,Times,serif;text-align:center;overflow:hidden;height:100vh;width:100vw;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:20px;';
+        smileys.forEach(s => { s.style.filter = 'none'; });
+      } else {
+        document.body.style.cssText = 'background-color:#000000;color:#ffffff;font-family:Times New Roman,Times,serif;text-align:center;overflow:hidden;height:100vh;width:100vw;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:20px;';
+        smileys.forEach(s => { s.style.filter = 'invert(1)'; });
+      }
+    }
+
+    applyState();
+
+    setInterval(() => {
+      white = !white;
+      requestAnimationFrame(applyState);
+    }, INTERVAL);
+  </script>
 </body>
 </html>
